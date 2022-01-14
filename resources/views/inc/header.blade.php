@@ -34,8 +34,15 @@
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    @guest
+                        <a class="btn btn-outline-success me-2" type="button"
+                           href="{{ route('register') }}">{{ __( 'Регистрация') }}</a>
+                        <a class="btn btn-outline-success me-2" type="button"
+                           href="{{ route('login') }}">{{ __( 'Вход') }}</a>
+                    @endguest
+                    @auth
+                        <a class="btn btn-danger" type="button" href="{{ route('user.logout') }}">{{ __( 'Выход') }}</a>
+                    @endauth
                 </form>
             </div>
         </div>

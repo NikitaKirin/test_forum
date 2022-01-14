@@ -34,7 +34,7 @@
             </span>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Зарегистрироваться</button>
         </form>
     </div>
 @endsection
