@@ -10,7 +10,16 @@ class RegisterRequest extends FormRequest
         return [
             "email"    => ["required", "email", "unique:users"],
             "name"     => ["required", "string"],
-            "password" => ["string"],
+            "password" => ["required", "string"],
+        ];
+    }
+
+    public function messages(): array {
+        return [
+            "required"     => "Данное поле обязательно для заполнения",
+            "email"        => "Введен некорректный email",
+            "email.unique" => "Данный email уже занят",
+            "string"       => "Введены недопустимые символы",
         ];
     }
 

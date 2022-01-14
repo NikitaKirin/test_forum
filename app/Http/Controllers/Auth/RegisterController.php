@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -14,11 +16,14 @@ class RegisterController extends Controller
     }
 
     // Регистрируем нового пользователя, для валидации используется "формальный запрос"
-    public function register( RegisterRequest $request ) {
-        $user = new User([
-            "name"     => $request->input('name'),
-            "email"    => $request->input("email"),
-            "password" => $request->input("password"),
-        ]);
+    public function register( RegisterRequest $request ): RedirectResponse {
+        $validated = $request->safe()->only(['name', 'email', 'password']);
+        $user = new User($validated);
+        if ( !$user->save() ) {
+            return redirect()->withErrors('Произошла ошибка при регистрации. Повторите попытку');
+        }
+        Auth::login($user);
+
+        return redirect()->route('user.index')->with(['success' => 'Вы успешно зарегистрированы!']);
     }
 }
