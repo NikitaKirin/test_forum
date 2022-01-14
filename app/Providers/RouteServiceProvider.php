@@ -49,6 +49,8 @@ class RouteServiceProvider extends ServiceProvider
                     require_once base_path('routes/web/main.php'); // Подключаем список с главными маршрутами приложения
                     require_once base_path('routes/web/auth/auth.php'); // Подключаем список маршрутов для
                     // авторизации/регистрации
+                    require_once base_path('routes/web/user.php'); // Подключаем список маршрутов для работы с
+                    // данными авторизованного пользователя;
                 });
         });
     }
