@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('title', __("Главная страница"))
 @section('main')
-    <p>Добро пожаловать на главную страницу!</p>
+    <div class="alert alert-primary" role="alert">
+        {{ $user->name }}, добро пожаловать на форум!
+    </div>
 @endsection
