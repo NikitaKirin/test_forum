@@ -51,6 +51,8 @@ class RouteServiceProvider extends ServiceProvider
                     // авторизации/регистрации
                     require_once base_path('routes/web/user.php'); // Подключаем список маршрутов для работы с
                     // данными авторизованного пользователя;
+                    require_once base_path('routes/web/post/post.php'); // Подключаем список маршрутов для работы с
+                    // ресурсом "тема форума"
                 });
         });
     }
