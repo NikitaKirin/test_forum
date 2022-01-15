@@ -53,4 +53,9 @@ class User extends Authenticatable
     public function posts(): HasMany {
         return $this->hasMany(Post::class);
     }
+
+    // Прямая связь "один-ко-многим" с сущностью Comment (Комментарий темы).
+    public function comments(): HasMany {
+        return $this->hasMany(Comment::class);
+    }
 }
