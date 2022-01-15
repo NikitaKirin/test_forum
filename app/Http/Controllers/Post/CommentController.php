@@ -53,7 +53,11 @@ class CommentController extends Controller
     }
 
     // Удалить комментарий
-    public function destroy( Request $request, Comment $comment ) {
-
+    public function destroy( Request $request, Comment $comment ): RedirectResponse {
+        if ( $comment->delete() ) {
+            return redirect()->route('posts.show', ['post' => $comment->post])
+                             ->with('success', 'Ваш комментарий успешно удален');
+        }
+        return redirect()->back()->withErrors('Произошла ошибка при удалении комментария. Попробуйте еще раз');
     }
 }
