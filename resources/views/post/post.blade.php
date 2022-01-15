@@ -29,12 +29,13 @@
             <th scope="col">Текст комментария</th>
             <th scope="col">Автор</th>
             <th scope="col">Дата и время</th>
+            <th scope="col">Действия</th>
         </tr>
         </thead>
         <tbody>
         @if(count($comments) < 1)
             <tr>
-                <td colspan="4" style="text-align: center; font-size: 20px;"><p class="alert alert-info">Пока
+                <td colspan="5" style="text-align: center; font-size: 20px;"><p class="alert alert-info">Пока
                         что комментариев нет, будьте первыми!</p>
                 </td>
             </tr>
@@ -46,6 +47,16 @@
                     <td>{{ $comments[$i]->text }}</td>
                     <td>{{ $comments[$i]->user->name }}</td>
                     <td>{{ $comments[$i]->updated_at }}</td>
+                    @if($comments[$i]->user_id == \Illuminate\Support\Facades\Auth::id())
+                        <td>
+                            <a href="{{ route('posts.comments.edit', ['comment' => $comments[$i]]) }}"
+                               class="btn btn-success">Изменить</a>
+                            <a href="{{ route('posts.comments.destroy', ['comment' => $comments[$i]]) }}"
+                               class="btn btn-danger">Удалить</a>
+                        </td>
+                    @else
+                        <td></td>
+                    @endif
                 </tr>
             @endfor
         @endisset

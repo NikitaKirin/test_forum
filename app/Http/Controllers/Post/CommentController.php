@@ -38,15 +38,16 @@ class CommentController extends Controller
     }
 
     // Открыть форму для изменения комментария
-    public function edit( Request $request, Post $post, Comment $comment ) {
-
+    public function edit( Request $request, Comment $comment ) {
+        return view('comment.comment-edit-form', ['comment' => $comment]);
     }
 
     // Обновить данные комментария
     public function update( Request $request, Comment $comment ): RedirectResponse {
         $validated = $request->validate(self::COMMENT_RULES, self::COMMENT_MESSAGES);
         if ( $comment->update($validated) ) {
-            return redirect()->back()->with('success', 'Комментарий успешно обновлен');
+            return redirect()->route('posts.show', ['post' => $comment->post, 'comments' => $comment->post->comments])
+                             ->with('success', 'Комментарий успешно обновлен');
         }
         return redirect()->back()->withErrors('Произошла ошибка. Повторите попытку еще раз');
     }
