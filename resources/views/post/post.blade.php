@@ -4,8 +4,10 @@
     <h1>Название: {{ $post->title }}</h1>
     <p>Описание: {{ $post->description }}</p>
     <p>Автор: {{ $post->user->name }}</p>
-    <a href="{{ route('posts.edit', ['post' => $post]) }}" class="btn btn-primary">Изменить тему</a>
-    <a href="{{ route('posts.destroy', ['post' => $post]) }}" class="btn btn-danger" rel="nofollow">Удалить тему</a>
+    @if(\Illuminate\Support\Facades\Auth::id() == $post->user_id)
+        <a href="{{ route('posts.edit', ['post' => $post]) }}" class="btn btn-primary">Изменить тему</a>
+        <a href="{{ route('posts.destroy', ['post' => $post]) }}" class="btn btn-danger" rel="nofollow">Удалить тему</a>
+    @endif
     <form method="post" action="{{ route('posts.comments.store', ['post' => $post]) }}" style="margin-top: 15px">
         @csrf
         <h3>Оставьте свой комментарий!</h3>

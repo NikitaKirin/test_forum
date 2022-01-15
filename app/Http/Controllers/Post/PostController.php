@@ -30,8 +30,8 @@ class PostController extends Controller
     // Создать новую тему для форума
     public function store( PostCreateRequest $request ): RedirectResponse {
         $validated = $request->safe()->only(['title', 'description']);
-        if ( Auth::user()->posts()->create($validated) ) {
-            return redirect()->back()->with('success', 'Новая тема успешно создана');
+        if ( $post = Auth::user()->posts()->create($validated) ) {
+            return redirect()->route('posts.show', ['post' => $post])->with('success', 'Новая тема успешно создана');
         }
 
         return redirect()->back()->withErrors('Произошла ошибка при создании новой темы. Попробуйте еще раз');
