@@ -17,6 +17,11 @@ class PostController extends Controller
         return view('post.posts', ['posts' => Post::all()]);
     }
 
+    // Вывести список тем текущего авторизованного пользователя
+    public function authIndex() {
+        return view('user.auth-user-posts', ['posts' => Auth::user()->posts]);
+    }
+
     // Вывести страницу с формой для создания новой темы
     public function create() {
         return view('post.post-form');

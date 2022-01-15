@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Post\PostController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::middleware('auth')->name('posts.')->prefix('posts')->group(function () {
+    Route::get('/me', [PostController::class, 'authIndex'])->name('auth-user');
     Route::get('/{post}/delete', [PostController::class, 'destroy'])->name('destroy');
     Route::get('/', [PostController::class, 'index'])->name('index');
     Route::get('/create', [PostController::class, 'create'])->name('create');
