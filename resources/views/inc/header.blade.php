@@ -10,7 +10,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('user.home') }}">Моя страница</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('users.home') }}">Моя страница</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -26,9 +26,6 @@
                             <li><a class="dropdown-item" href="{{ route('posts.auth-user') }}">Список моих тем</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
-                    </li>
                 </ul>
                 <form class="d-flex">
                     @guest
@@ -38,7 +35,7 @@
                            href="{{ route('login') }}">{{ __( 'Вход') }}</a>
                     @endguest
                     @auth
-                        <a class="btn btn-danger" type="button" href="{{ route('user.logout') }}">{{ __( 'Выход') }}</a>
+                        <a class="btn btn-danger" type="button" href="{{ route('users.logout') }}">{{ __( 'Выход') }}</a>
                     @endauth
                 </form>
             </div>

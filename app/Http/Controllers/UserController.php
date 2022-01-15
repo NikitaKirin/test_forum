@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,5 +27,16 @@ class UserController extends Controller
             return redirect()->back()->with('success', 'Ваши данные успешно обновлены');
         }
         return redirect()->back()->withErrors('Произошла ошибка. Попробуйте еще раз');
+    }
+
+    // Вывести страницу определенного пользователя
+    public function show( Request $request, User $user ) {
+        if ( Auth::id() == $user->id )
+            return redirect()->route('users.home', ['user' => Auth::user()]);
+        return view('user.user', [
+            'user'     => $user,
+            "posts"    => $user->posts()->paginate(5),
+            "comments" => $user->comments()->paginate(5),
+        ]);
     }
 }

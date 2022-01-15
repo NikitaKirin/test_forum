@@ -1,4 +1,4 @@
-<form method="post" action="{{ route('user.update') }}">
+<form method="post" action="{{ route('users.update') }}">
     @csrf
     @method('PATCH')
     <h3>Изменить свои данные</h3>

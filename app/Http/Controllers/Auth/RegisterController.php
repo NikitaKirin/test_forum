@@ -24,7 +24,7 @@ class RegisterController extends Controller
         }
         Auth::login($user);
 
-        return redirect()->route('user.home', ['user' => Auth::user()])
+        return redirect()->route('users.home', ['user' => Auth::user()])
                          ->with(['success' => 'Вы успешно зарегистрированы!']);
     }
 }

@@ -3,7 +3,7 @@
 @section('main')
     <h1>Название: {{ $post->title }}</h1>
     <p>Описание: {{ $post->description }}</p>
-    <p>Автор: {{ $post->user->name }}</p>
+    <p>Автор: <a href="{{ route('users.show', ['user' => $post->user]) }}">{{ $post->user->name }}</a></p>
     @if(\Illuminate\Support\Facades\Auth::id() == $post->user_id)
         <a href="{{ route('posts.edit', ['post' => $post]) }}" class="btn btn-primary">Изменить тему</a>
         <a href="{{ route('posts.destroy', ['post' => $post]) }}" class="btn btn-danger" rel="nofollow">Удалить тему</a>
@@ -47,7 +47,11 @@
                 <tr>
                     <td>{{ $i+1 }}</td>
                     <td>{{ $comments[$i]->text }}</td>
-                    <td>{{ $comments[$i]->user->name }}</td>
+                    <td>
+                        <a href="{{ route('users.show', ['user' => $comments[$i]->user]) }}">
+                            {{ $comments[$i]->user->name }}
+                        </a>
+                    </td>
                     <td>{{ $comments[$i]->updated_at }}</td>
                     @if($comments[$i]->user_id == \Illuminate\Support\Facades\Auth::id())
                         <td>

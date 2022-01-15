@@ -20,7 +20,7 @@ class LoginController extends Controller
         if ( Auth::attempt($validated) ) {
             $user = User::where('email', $validated['email'])->get()->first();
             Auth::login($user);
-            return redirect()->route('user.home', ['user' => Auth::user()])
+            return redirect()->route('users.home', ['user' => Auth::user()])
                              ->with('success', 'Вы успешно вошли в систему!');
         }
 
