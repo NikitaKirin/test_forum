@@ -53,6 +53,8 @@ class RouteServiceProvider extends ServiceProvider
                     // данными авторизованного пользователя;
                     require_once base_path('routes/web/post/post.php'); // Подключаем список маршрутов для работы с
                     // ресурсом "тема форума"
+                    require_once base_path('routes/web/post/comment.php'); // Подключаем список маршрутов для работы
+                    // с комментариями
                 });
         });
     }

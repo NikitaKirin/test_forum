@@ -34,7 +34,7 @@ class PostController extends Controller
 
     // Посмотреть определенную тему форума
     public function show( Request $request, Post $post ) {
-        return view('post.post', ['post' => $post]);
+        return view('post.post', ['post' => $post, 'comments' => $post->comments()->get()]);
     }
 
     // Вывести форму для изменения определенной темы форума

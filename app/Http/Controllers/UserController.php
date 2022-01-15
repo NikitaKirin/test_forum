@@ -8,6 +8,6 @@ class UserController extends Controller
 {
     // Выводим главную страницу для авторизованных пользователей
     public function index() {
-        return view('home', ["user" => Auth::user()]);
+        return view('home', ['user' => Auth::user()]);
     }
 }
