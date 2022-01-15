@@ -2,12 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    // Выводим главную страницу для авторизованных пользователей
+    const USER_RULES = ['name' => 'required|string'];
+    const USER_MESSAGES = [
+        'required' => 'Данное поле обязательно для заполнения',
+        'string'   => 'Введены недопустимые символы',
+    ];
+
+    // Вывести главную страницу для авторизованных пользователей
     public function index() {
         return view('home', ['user' => Auth::user()]);
+    }
+
+    // Изменить свои данные
+    public function update( Request $request ): RedirectResponse {
+        $validated = $request->validate(self::USER_RULES, self::USER_MESSAGES);
+        if ( Auth::user()->update($validated) ) {
+            return redirect()->back()->with('success', 'Ваши данные успешно обновлены');
+        }
+        return redirect()->back()->withErrors('Произошла ошибка. Попробуйте еще раз');
     }
 }
