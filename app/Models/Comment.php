@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -23,4 +24,8 @@ class Comment extends Model
         return $this->belongsTo(Post::class);
     }
 
+    //Акцессор для преобразования формата timestamp у атрибута "updated_at"
+    public function getUpdatedAtAttribute( $value ): string {
+        return Carbon::parse($value)->format('d.m.Y / H:i');
+    }
 }
