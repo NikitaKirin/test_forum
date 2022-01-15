@@ -19,7 +19,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{{ route('posts.index') }}">Список всех тем</a></li>
-                            <li><a class="dropdown-item" href="#">Создать новую тему</a></li>
+                            <li><a class="dropdown-item" href="{{ route('posts.create') }}">Создать новую тему</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
