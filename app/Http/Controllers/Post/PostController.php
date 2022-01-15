@@ -14,7 +14,7 @@ class PostController extends Controller
 {
     // Вывести список всех доступных тем на форуме
     public function index() {
-        return view('post.posts', ['posts' => Post::all()]);
+        return view('post.posts', ['posts' => Post::paginate(5)]);
     }
 
     // Вывести список тем текущего авторизованного пользователя
