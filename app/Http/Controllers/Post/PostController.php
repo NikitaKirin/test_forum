@@ -14,12 +14,12 @@ class PostController extends Controller
 {
     // Вывести список всех доступных тем на форуме
     public function index() {
-        return view('post.posts', ['posts' => Post::paginate(5)]);
+        return view('post.posts', ['posts' => Post::orderBy('updated_at')->paginate(5)]);
     }
 
     // Вывести список тем текущего авторизованного пользователя
     public function authIndex() {
-        return view('user.auth-user-posts', ['posts' => Auth::user()->posts]);
+        return view('user.auth-user-posts', ['posts' => Auth::user()->posts()->orderBy('updated_at')->get()]);
     }
 
     // Вывести страницу с формой для создания новой темы
@@ -39,7 +39,7 @@ class PostController extends Controller
 
     // Посмотреть определенную тему форума
     public function show( Request $request, Post $post ) {
-        return view('post.post', ['post' => $post, 'comments' => $post->comments()->get()]);
+        return view('post.post', ['post' => $post, 'comments' => $post->comments()->orderBy('updated_at')->get()]);
     }
 
     // Вывести форму для изменения определенной темы форума

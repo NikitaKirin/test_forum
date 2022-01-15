@@ -21,7 +21,7 @@ class CommentController extends Controller
 
     // Вывести все комментарии определенной темы форума
     public function index( Request $request, Post $post ): Collection {
-        return $post->comments()->get();
+        return $post->comments()->orderBy('updated_at')->get();
     }
 
     // Создать новый комментарий
