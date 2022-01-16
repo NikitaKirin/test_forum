@@ -9,8 +9,8 @@
             <span class="text-muted">&copy; 2022 Kirin Nikita</span>
         </div>
         <div>
-            <a href="tel:8982989712" class="text-muted">8-982-987-97-12</a>
-            <a href="mailto:kirinnikita1406@gmail.com" class="text-muted">kirinnikita1406@gmail.com</a>
+            <a href="tel:8982989712" class="text-muted" style="text-decoration: none;">8-982-987-97-12</a>
+            <a href="mailto:kirinnikita1406@gmail.com" class="text-muted" style="text-decoration: none;">kirinnikita1406@gmail.com</a>
         </div>
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
             <li class="ms-3"><a class="text-muted" href="https://github.com/NikitaKirin" target="_blank">

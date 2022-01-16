@@ -9,7 +9,7 @@
             <th scope="col">#</th>
             <th scope="col">Название темы</th>
             <th scope="col">Количество комментариев</th>
-            <th scope="col">Дата создания / последнее обновление</th>
+            <th scope="col">Дата и время</th>
         </tr>
         </thead>
         <tbody>
