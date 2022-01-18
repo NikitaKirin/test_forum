@@ -20,10 +20,10 @@ class LoginController extends Controller
         if ( Auth::attempt($validated) ) {
             $user = User::where('email', $validated['email'])->get()->first();
             Auth::login($user);
-            return redirect()->route('users.home')
-                             ->with('success', 'Вы успешно вошли в систему!');
+            return redirect()->route('users.home')->with('success', 'Вы успешно вошли в систему!');
         }
 
-        return redirect()->back()->withErrors('Введен неверный email или пароль');
+        return redirect()->back()->withErrors('Введен неверный email или пароль')
+                         ->withInput(['email' => $request->input('email')]);
     }
 }

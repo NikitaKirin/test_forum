@@ -16,7 +16,7 @@
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                <input type="text" class="form-control @error('email') is-invalid @enderror" id="email"
                        aria-describedby="emailHelp" name="email" value="{{ old('email') }}">
                 @error('email')
                 <span class="invalid-feedback">
