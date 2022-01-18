@@ -17,7 +17,7 @@ class UserController extends Controller
 
     // Вывести главную страницу для авторизованных пользователей
     public function index() {
-        return view('home', ['user' => Auth::user()]);
+        return view('home');
     }
 
     // Изменить свои данные
@@ -32,7 +32,7 @@ class UserController extends Controller
     // Вывести страницу определенного пользователя
     public function show( Request $request, User $user ) {
         if ( Auth::id() == $user->id )
-            return redirect()->route('users.home', ['user' => Auth::user()]);
+            return redirect()->route('users.home');
         return view('user.user', [
             'user'     => $user,
             "posts"    => $user->posts()->paginate(5),
